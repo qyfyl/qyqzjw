@@ -1,0 +1,414 @@
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>祁阳市第七中学招生咨询</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#0E2E8C',
+            neutral: '#F5F7FA',
+            dark: '#1D2129',
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .animate-scale-in {
+        animation: scaleIn 0.3s ease-out;
+      }
+      .animate-slide-up {
+        animation: slideUp 0.3s ease-out;
+      }
+      .animate-pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    }
+    
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+    
+    @keyframes slideUp {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="font-inter bg-gray-50 min-h-screen flex flex-col">
+  <!-- 导航栏 -->
+  <header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 hover:shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+          <i class="fa fa-graduation-cap text-white text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold text-dark">祁阳市第七中学</h1>
+          <p class="text-xs text-gray-500">智慧招生咨询平台</p>
+        </div>
+      </div>
+      
+      <button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端菜单 -->
+    <div class="md:hidden hidden bg-white border-t animate-fade-in shadow-inner" id="mobile-menu">
+      <div class="container mx-auto px-4 py-2 space-y-3">
+        <a href="#" class="block py-2 px-4 text-gray-700 hover:text-primary transition-colors rounded-lg hover:bg-primary/5">首页</a>
+        <a href="#" class="block py-2 px-4 text-gray-700 hover:text-primary transition-colors rounded-lg hover:bg-primary/5">学校概况</a>
+          <a href="#" class="block py-2 px-4 text-gray-700 hover:text-primary transition-colors rounded-lg hover:bg-primary/5">招生信息</a>
+          <a href="#" class="block py-2 px-4 text-gray-700 hover:text-primary transition-colors rounded-lg hover:bg-primary/5">校园风采</a>
+          <a href="#" class="block py-2 px-4 text-gray-700 hover:text-primary transition-colors rounded-lg hover:bg-primary/5">联系我们</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- 欢迎信息 -->
+      <div class="text-center mb-10 animate-fade-in bg-gradient-to-r from-primary/5 to-secondary/5 p-8 rounded-2xl">
+        <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold text-dark mb-4 text-shadow">祁阳市第七中学招生咨询</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">欢迎使用智能招生咨询系统，您可以通过下方问题快速了解招生相关信息，或点击右下角智能体小七输入您的疑问获取帮助。我们将为您提供最新、最准确的招生政策解读。</p>
+      </div>
+      
+      <!-- 智能咨询主对话框 -->
+      <div id="coze-container" class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8 max-w-md mx-auto w-full max-h-[80vh] transition-all duration-300 border border-gray-100"></div>
+      
+      <!-- 其他联系方式 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] border border-gray-50 hover:border-primary/20">
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+            <i class="fa fa-phone text-primary text-xl"></i>
+          </div>
+          <h4 class="text-lg font-semibold mb-2">电话咨询</h4>
+          <p class="text-gray-600 mb-3">工作日 8:00-17:00</p>
+          <a href="tel:17873943784" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+            17873943784 <i class="fa fa-angle-right ml-1"></i>
+          </a>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] border border-gray-50 hover:border-primary/20">
+          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+            <i class="fa fa-weixin text-green-600 text-xl"></i>
+          </div>
+          <h4 class="text-lg font-semibold mb-2">微信咨询</h4>
+          <p class="text-gray-600 mb-3">扫描二维码添加咨询</p>
+          <button class="text-primary hover:text-secondary transition-colors font-medium flex items-center" id="show-wechat">
+            查看二维码 <i class="fa fa-angle-right ml-1"></i>
+          </button>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] border border-gray-50 hover:border-primary/20">
+          <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+            <i class="fa fa-map-marker text-purple-600 text-xl"></i>
+          </div>
+          <h4 class="text-lg font-semibold mb-2">现场咨询</h4>
+          <p class="text-gray-600 mb-3">祁阳市第七中学招生办公室</p>
+          <a href="https://map.baidu.com/search/祁阳市第七中学" target="_blank" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+            查看位置 <i class="fa fa-angle-right ml-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 引导话语 -->
+  <div class="text-center mt-10 mb-16 text-gray-600 animate-fade-in">
+    <p class="text-lg font-medium">点击右下角与智能客服小七对话</p>
+  </div>
+
+  <!-- 微信二维码模态框 -->
+  <div class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center" id="wechat-modal">
+    <div class="bg-white rounded-xl p-6 max-w-sm w-full animate-scale-in shadow-lg">
+      <div class="text-center">
+        <h3 class="text-xl font-semibold mb-4">微信咨询</h3>
+        <div class="bg-gray-100 p-4 mb-4 rounded-lg">
+          <img src="8327a3b6c68a2a5ed4a648b1327524e3.png" alt="祁阳市第七中学微信公众号二维码" class="mx-auto w-48 h-48">
+        </div>
+        <p class="text-gray-600 mb-4">扫描二维码，添加祁阳市第七中学招生咨询微信公众号</p>
+        <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg transition-all transform hover:scale-105" id="close-wechat">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 报名二维码模态框 -->
+  <div class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center" id="signup-modal">
+    <div class="bg-white rounded-xl p-6 max-w-sm w-full animate-scale-in shadow-lg">
+      <div class="text-center">
+        <h3 class="text-xl font-semibold mb-4">报名二维码</h3>
+        <div class="bg-gray-100 p-4 mb-4 rounded-lg">
+          <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/91b922cc9afb47ea99410bcf641c2a5d~tplv-a9rns2rl98-image.image?rk3s=8e244e95&amp;rrcfp=e75484ac&amp;x-expires=1753588554&amp;x-signature=1nO%2FCJEAFeVx50oUmOBdiGHLS1E%3D" alt="祁阳市第七中学报名二维码" class="mx-auto w-48 h-48">
+        </div>
+        <p class="text-gray-600 mb-4">扫描二维码，进行报名</p>
+        <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg transition-all transform hover:scale-105" id="close-signup">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 常见问题及回答
+    const faqAnswers = {
+      "领取录取通知书时间": "8月底时间暂定；",
+      "志愿填报流程": "见链接<a href='https://mp.weixin.qq.com/s/C_RKEnup_QpCVFYiw6z7rg' target='_blank' class='text-primary hover:underline'>https://mp.weixin.qq.com/s/C_RKEnup_QpCVFYiw6z7rg</a>；",
+      "分班考试时间": "8月27日8:30-10:30，语数英三科；",
+      "分班考号查询": "分班当天在公众号里面扫码查询；",
+      "生活费等费用咨询": "1800元左右，以具体通知为准；",
+      "报名方式是什么？": "扫码报名<a href='javascript:void(0)' class='text-primary hover:underline' id='show-signup-btn'>点击显示二维码</a>"
+    };
+    
+    // 其他问题回答
+    const defaultAnswers = [
+      "感谢您的提问，我们会尽快核实相关信息并回复您。",
+      "您的问题非常重要，建议您拨打招生咨询电话17873943784获取更准确的信息。",
+      "关于这个问题，我们的招生老师会给您详细解答，请您耐心等待。",
+      "您可以关注我们学校的微信公众号，获取最新的招生动态和信息。"
+    ];
+    
+    // DOM元素
+    const chatContainer = document.getElementById('chat-container');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const wechatModal = document.getElementById('wechat-modal');
+    const showWechatBtn = document.getElementById('show-wechat');
+    const closeWechatBtn = document.getElementById('close-wechat');
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    const signupModal = document.getElementById('signup-modal');
+    const closeSignupBtn = document.getElementById('close-signup');
+    
+    // 移动端菜单切换
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 显示/隐藏微信二维码
+    showWechatBtn.addEventListener('click', () => {
+      wechatModal.style.display = 'flex';
+    });
+    
+    closeWechatBtn.addEventListener('click', () => {
+      wechatModal.style.display = 'none';
+    });
+    
+    // 显示/隐藏报名二维码
+    document.addEventListener('click', (e) => {
+      if (e.target.id === 'show-signup-btn') {
+        signupModal.style.display = 'flex';
+      }
+    });
+    
+    closeSignupBtn.addEventListener('click', () => {
+      signupModal.style.display = 'none';
+    });
+    
+    // 点击模态框外部关闭
+    wechatModal.addEventListener('click', (e) => {
+      if (e.target === wechatModal) {
+        wechatModal.style.display = 'none';
+      }
+    });
+    
+    signupModal.addEventListener('click', (e) => {
+      if (e.target === signupModal) {
+        signupModal.style.display = 'none';
+      }
+    });
+    
+    // 添加消息到聊天窗口
+    function addMessage(text, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `flex items-start mb-4 animate-slide-up ${isUser ? 'justify-end' : ''}`;
+      
+      if (isUser) {
+        messageDiv.innerHTML = `
+          <div class="bg-primary text-white p-4 rounded-lg rounded-tr-none shadow-sm max-w-[80%]">
+            <p>${text}</p>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center ml-3 flex-shrink-0">
+            <i class="fa fa-user text-gray-600"></i>
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-3 flex-shrink-0">
+            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/1a95d197f5a74b8c9872962359097b73~tplv-a9rns2rl98-image.image?rk3s=8e244e95&amp;rrcfp=e75484ac&amp;x-expires=1753589723&amp;x-signature=BY1O5OgiFpUm8S7b2hwDRSvZg2E%3D" alt="祁阳市第七中学Logo" class="w-8 h-8 rounded-full object-cover">
+          </div>
+          <div class="bg-white p-4 rounded-lg rounded-tl-none shadow-sm max-w-[80%]">
+            <p>${text}</p>
+          </div>
+        `;
+      }
+      
+      chatContainer.appendChild(messageDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      
+      // 如果是添加报名方式的回答，为链接添加事件监听
+      if (text.includes('点击显示二维码') && !isUser) {
+        setTimeout(() => {
+          const showSignupBtn = document.querySelector('#show-signup-btn');
+          if (showSignupBtn) {
+            showSignupBtn.addEventListener('click', () => {
+              signupModal.style.display = 'flex';
+            });
+          }
+        }, 100);
+      }
+    }
+    
+    // 获取随机默认回答
+    function getRandomDefaultAnswer() {
+      const randomIndex = Math.floor(Math.random() * defaultAnswers.length);
+      return defaultAnswers[randomIndex];
+    }
+    
+    // 处理用户输入
+    function handleUserInput() {
+      const userText = userInput.value.trim();
+      if (!userText) return;
+      
+      // 添加用户消息
+      addMessage(userText, true);
+      
+      // 清空输入框
+      userInput.value = '';
+      
+      // 显示"正在输入"状态
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'flex items-start mb-4 animate-slide-up';
+      typingDiv.innerHTML = `
+        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-3 flex-shrink-0">
+          <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/1a95d197f5a74b8c9872962359097b73~tplv-a9rns2rl98-image.image?rk3s=8e244e95&amp;rrcfp=e75484ac&amp;x-expires=1753589723&amp;x-signature=BY1O5OgiFpUm8S7b2hwDRSvZg2E%3D" alt="祁阳市第七中学Logo" class="w-8 h-8 rounded-full object-cover">
+        </div>
+        <div class="bg-white p-4 rounded-lg rounded-tl-none shadow-sm max-w-[80%]">
+          <div class="flex space-x-1">
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+          </div>
+        </div>
+      `;
+      
+      chatContainer.appendChild(typingDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      
+      // 模拟AI思考时间
+      setTimeout(() => {
+        // 移除"正在输入"状态
+        chatContainer.removeChild(typingDiv);
+        
+        // 获取回答
+        let answer;
+        if (faqAnswers[userText]) {
+          answer = faqAnswers[userText];
+        } else {
+          // 检查用户问题是否包含常见问题关键词
+          const matchedQuestion = Object.keys(faqAnswers).find(question => 
+            userText.toLowerCase().includes(question.toLowerCase())
+          );
+          
+          if (matchedQuestion) {
+            answer = faqAnswers[matchedQuestion];
+          } else {
+            answer = getRandomDefaultAnswer();
+          }
+        }
+        
+        // 添加AI回答
+        addMessage(answer.replace(/\n/g, '<br>'));
+      }, 1000);
+    }
+    
+    // 发送按钮点击事件
+    sendBtn.addEventListener('click', handleUserInput);
+    
+    // 回车键发送消息
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleUserInput();
+      }
+    });
+    
+    // 常见问题按钮点击事件
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const question = button.getAttribute('data-question');
+        userInput.value = question;
+        handleUserInput();
+      });
+    });
+    
+    // 导航栏滚动效果
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 10) {
+        header.classList.add('py-2');
+        header.classList.remove('py-4');
+      } else {
+        header.classList.add('py-4');
+        header.classList.remove('py-2');
+      }
+    });
+  </script>
+
+<script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.10/libs/cn/index.js"></script>
+<script>
+  new CozeWebSDK.WebChatClient({
+    config: {
+      bot_id: '7529007680367820839',
+    },
+    componentProps: {
+      title: 'Coze',
+      el: document.getElementById('coze-container'),
+      width: '100%',
+      height: '100%'
+    },
+    auth: {
+      type: 'token',
+      token: 'pat_zpDnOS0Z15P7bPRhHQ9zo1nwGU8nrjH406htDlgzrhJMADD8v67MEhsZPNJAUqtk',
+      onRefreshToken: function () {
+        return 'pat_********'
+      }
+    }
+  });
+</script>
+
+    
+    </body></html>
